@@ -26,9 +26,7 @@ class MainActivity2 : AppCompatActivity() {
         val cardHistory = findViewById<CardView>(R.id.cardHistory)
         val cardSetupProfile = findViewById<CardView>(R.id.cardSetupProfile)
 
-        // Connect to Setup Profile Activity via Card
         cardSetupProfile.setOnClickListener {
-            // Check if user exists, if so edit, otherwise create new
             val sharedPrefs = getSharedPreferences("PilleasePrefs", MODE_PRIVATE)
             val userId = sharedPrefs.getInt("user_id", -1)
             
@@ -39,25 +37,21 @@ class MainActivity2 : AppCompatActivity() {
             startActivity(intent)
         }
         
-        // Long press to clear profile (reset to first-time setup)
         cardSetupProfile.setOnLongClickListener {
             showClearProfileDialog()
             true
         }
 
-        // Connect to Medicationreminder Activity
         cardReminder.setOnClickListener {
             val intent = Intent(this, Medicationreminder::class.java)
             startActivity(intent)
         }
 
-        // Connect to DailyHealthLog Activity
         cardHealthLog.setOnClickListener {
             val intent = Intent(this, DailyHealthLog::class.java)
             startActivity(intent)
         }
 
-        // Connect to MedicalHistoryTracker Activity
         cardHistory.setOnClickListener {
             val intent = Intent(this, MedicalHistoryTracker::class.java)
             startActivity(intent)
@@ -84,4 +78,3 @@ class MainActivity2 : AppCompatActivity() {
             .setNegativeButton("Cancel", null)
             .show()
     }
-}
